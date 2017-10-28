@@ -15,6 +15,7 @@
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "prepublish": "npm run build",
+    "postinstall": "npm run build",
     "build:min": "webpack && gzip-size ./dist/light-form.min.js",
     "build:clean": "rimraf ./dist",
     "build:umd": "cross-env NODE_ENV=umd babel ./src --out-dir ./dist/umd",
