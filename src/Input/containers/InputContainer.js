@@ -23,15 +23,13 @@ const InputContainer = component =>
             return dispatch.dispatch(changeField(type, own.name, value));
         };
 
-      const value =
-        (own.type === "radio" && own.value) ||
-        (own.name && dotProp.get(state, own.name) || '');
+      const value = own.type === "radio" && own.value || own.name && dotProp.get(state, own.name) !== undefined ? dotProp.get(state, own.name)  : '';
 
       return ({
             // Pass in received props first so defined props overwrite any preexisting ones.
             ...own,
             value: value,
-            checked: own.type === "radio" && own.value == dotProp.get(state, own.name),
+            checked: (own.type === "radio" && own.value == dotProp.get(state, own.name)) || (own.type === "checkbox" && dotProp.get(state, own.name)),
             onChange: event => {
               const processedEvent = own.onChange ? own.onChange(event) : event;
               return processedEvent && onChange(processedEvent);
