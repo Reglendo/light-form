@@ -31,7 +31,7 @@ const InputContainer = component =>
             // Pass in received props first so defined props overwrite any preexisting ones.
             ...own,
             value: value,
-            checked: (own.type === "radio" || own.type === "checkbox") && own.value == dotProp.get(state, own.name),
+            checked: own.type === "radio" && own.value == dotProp.get(state, own.name),
             onChange: event => {
               const processedEvent = own.onChange ? own.onChange(event) : event;
               return processedEvent && onChange(processedEvent);
