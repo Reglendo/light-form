@@ -17,7 +17,10 @@ export default (namespace, defaultState, onStateChange, actionHandlers) =>
 
         const reducer = {
             [INIT_FORM]: (state,action) => {
-                return action.payload
+                if(namespace === action.payload.form) {
+                    return action.payload.data;
+                }
+                return state;
             },
             [boundType]: () => {
                 const fieldPathWithoutNamespace = action.name.replace(namespace + '.', '');
