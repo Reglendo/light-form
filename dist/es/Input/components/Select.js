@@ -4,18 +4,27 @@ import React from "react";
 import PropTypes from "prop-types";
 
 var Select = function Select(_ref) {
-  var children = _ref.children,
-      props = _objectWithoutProperties(_ref, ["children"]);
+    var children = _ref.children,
+        element = _ref.element,
+        props = _objectWithoutProperties(_ref, ["children", "element"]);
 
-  return React.createElement(
-    "select",
-    props,
-    children
-  );
+    if (element) {
+        var Element = props._currentElement;
+        return React.createElement(
+            Element,
+            props,
+            children
+        );
+    }
+    return React.createElement(
+        "select",
+        props,
+        children
+    );
 };
 
 Select.propTypes = {
-  name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired
 };
 
 export default Select;
