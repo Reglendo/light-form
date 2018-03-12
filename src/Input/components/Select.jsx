@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import SelectItem from "react-select-item";
 
-const Select = ({children, element, ...props}) => {
-    if(element) {
-        const Element = props._currentElement
-        return <Element {...props}>
-                    {children}
-                </Element>
+const Select = ({children, selectItem, ...props}) => {
+    if(selectItem === true) {
+        return <SelectItem {...props}>
+                {children}
+              </SelectItem>;
     }
+
     return <select {...props}>
-            {children}
-          </select>;
+                {children}
+           </select>
 }
 
 Select.propTypes = {

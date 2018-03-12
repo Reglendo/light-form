@@ -17,9 +17,22 @@ const InputContainer = component =>
             const value = event.target.type === 'checkbox'
                 ? event.target.checked
                 : event.target.value;
-
             const namespace = getFieldNamespace(own.name);
             const type = createBoundType(namespace);
+
+            if(event.target.type === 'select-multiple') {
+                const arry = Array.from(event.target.selectedOptions);
+                const selected = [];
+                arry.map(function(o) {
+                    selected.push(o.value);
+                } );
+                dispatch.dispatch(changeField(type, own.name, value));
+                return dispatch.dispatch(changeField(type, own.name+'[values]', selected.join('|')));
+
+            } else {
+                return dispatch.dispatch(changeField(type, own.name, value));
+            }
+
             return dispatch.dispatch(changeField(type, own.name, value));
         };
 

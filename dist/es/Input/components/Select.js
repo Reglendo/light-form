@@ -2,20 +2,21 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 import React from "react";
 import PropTypes from "prop-types";
+import SelectItem from "react-select-item";
 
 var Select = function Select(_ref) {
     var children = _ref.children,
-        element = _ref.element,
-        props = _objectWithoutProperties(_ref, ["children", "element"]);
+        selectItem = _ref.selectItem,
+        props = _objectWithoutProperties(_ref, ["children", "selectItem"]);
 
-    if (element) {
-        var Element = props._currentElement;
+    if (selectItem === true) {
         return React.createElement(
-            Element,
+            SelectItem,
             props,
             children
         );
     }
+
     return React.createElement(
         "select",
         props,
