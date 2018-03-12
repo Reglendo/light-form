@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SelectItem from "react-select-item";
+import {Select as SelectItem} from "react-select-item";
 
 const Select = ({children, selectItem, ...props}) => {
     if(selectItem === true) {

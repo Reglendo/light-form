@@ -2,7 +2,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 import React from "react";
 import PropTypes from "prop-types";
-import SelectItem from "react-select-item";
+import { Select as SelectItem } from "react-select-item";
 
 var Select = function Select(_ref) {
     var children = _ref.children,

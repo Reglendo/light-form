@@ -27,7 +27,7 @@ const InputContainer = component =>
                     selected.push(o.value);
                 } );
                 dispatch.dispatch(changeField(type, own.name, value));
-                return dispatch.dispatch(changeField(type, own.name+'[values]', selected.join('|')));
+                return dispatch.dispatch(changeField(type, own.name, selected.join('|')));
 
             } else {
                 return dispatch.dispatch(changeField(type, own.name, value));
@@ -41,7 +41,7 @@ const InputContainer = component =>
       return ({
             // Pass in received props first so defined props overwrite any preexisting ones.
             ...own,
-            value: value,
+            value: own.selectItem ? value.split('|') : value,
             checked: (own.type === "radio" && own.value == dotProp.get(state, own.name)) || (own.type === "checkbox" && dotProp.get(state, own.name)),
             onChange: event => {
               const processedEvent = own.onChange ? own.onChange(event) : event;

@@ -44,7 +44,7 @@ var InputContainer = function InputContainer(component) {
                     selected.push(o.value);
                 });
                 dispatch.dispatch((0, _Input.changeField)(type, own.name, value));
-                return dispatch.dispatch((0, _Input.changeField)(type, own.name + '[values]', selected.join('|')));
+                return dispatch.dispatch((0, _Input.changeField)(type, own.name, selected.join('|')));
             } else {
                 return dispatch.dispatch((0, _Input.changeField)(type, own.name, value));
             }
@@ -55,7 +55,7 @@ var InputContainer = function InputContainer(component) {
         var value = own.type === "radio" && own.value !== null ? own.value : own.name && _dotPropImmutable2.default.get(state, own.name) !== undefined ? _dotPropImmutable2.default.get(state, own.name) : '';
 
         return _extends({}, own, {
-            value: value,
+            value: own.selectItem ? value.split('|') : value,
             checked: own.type === "radio" && own.value == _dotPropImmutable2.default.get(state, own.name) || own.type === "checkbox" && _dotPropImmutable2.default.get(state, own.name),
             onChange: function onChange(event) {
                 var processedEvent = own.onChange ? own.onChange(event) : event;
