@@ -55,7 +55,7 @@ var InputContainer = function InputContainer(component) {
         var value = own.type === "radio" && own.value !== null ? own.value : own.name && _dotPropImmutable2.default.get(state, own.name) !== undefined ? _dotPropImmutable2.default.get(state, own.name) : '';
 
         return _extends({}, own, {
-            value: own.selectItem ? value.split('|') : value,
+            value: own.selectItem ? value ? value.split('|') : [] : value,
             checked: own.type === "radio" && own.value == _dotPropImmutable2.default.get(state, own.name) || own.type === "checkbox" && _dotPropImmutable2.default.get(state, own.name),
             onChange: function onChange(event) {
                 var processedEvent = own.onChange ? own.onChange(event) : event;
