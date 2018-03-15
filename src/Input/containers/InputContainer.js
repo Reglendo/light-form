@@ -14,11 +14,20 @@ const InputContainer = component =>
     }),
     (state, dispatch, own) => {
         const onChange = event => {
+            const namespace = getFieldNamespace(own.name);
+            const type = createBoundType(namespace);
+
+            if(!event.target) {
+                const selected = [];
+                event.map(function (o) {
+                    selected.push(o.value);
+                });
+                dispatch.dispatch(changeField(type, own.name, selected.pop()));
+                return dispatch.dispatch(changeField(type, own.name, event.join('|')));
+            }
             const value = event.target.type === 'checkbox'
                 ? event.target.checked
                 : event.target.value;
-            const namespace = getFieldNamespace(own.name);
-            const type = createBoundType(namespace);
 
             if(event.target.type === 'select-multiple') {
                 const arry = Array.from(event.target.selectedOptions);

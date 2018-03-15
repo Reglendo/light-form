@@ -33,18 +33,27 @@ var InputContainer = function InputContainer(component) {
         };
     }, function (state, dispatch, own) {
         var _onChange = function _onChange(event) {
-            var value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
             var namespace = getFieldNamespace(own.name);
             var type = (0, _Input.createBoundType)(namespace);
 
-            if (event.target.type === 'select-multiple') {
-                var arry = Array.from(event.target.selectedOptions);
+            if (!event.target) {
                 var selected = [];
-                arry.map(function (o) {
+                event.map(function (o) {
                     selected.push(o.value);
                 });
+                dispatch.dispatch((0, _Input.changeField)(type, own.name, selected.pop()));
+                return dispatch.dispatch((0, _Input.changeField)(type, own.name, event.join('|')));
+            }
+            var value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+
+            if (event.target.type === 'select-multiple') {
+                var arry = Array.from(event.target.selectedOptions);
+                var _selected = [];
+                arry.map(function (o) {
+                    _selected.push(o.value);
+                });
                 dispatch.dispatch((0, _Input.changeField)(type, own.name, value));
-                return dispatch.dispatch((0, _Input.changeField)(type, own.name, selected.join('|')));
+                return dispatch.dispatch((0, _Input.changeField)(type, own.name, _selected.join('|')));
             } else {
                 return dispatch.dispatch((0, _Input.changeField)(type, own.name, value));
             }
