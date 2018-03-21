@@ -49,7 +49,7 @@ var InputContainer = function InputContainer(component) {
         var value = own.type === "radio" && own.value !== null ? own.value : own.name && dotProp.get(state, own.name) !== undefined ? dotProp.get(state, own.name) : '';
 
         return _extends({}, own, {
-            value: own.selectItem ? value ? value.split('|') : [] : value,
+            value: own.selectItem ? value ? ("" + value).split('|') : [] : value,
             checked: own.type === "radio" && own.value == dotProp.get(state, own.name) || own.type === "checkbox" && dotProp.get(state, own.name),
             onChange: function onChange(event) {
                 var processedEvent = own.onChange ? own.onChange(event) : event;
