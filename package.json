@@ -1,19 +1,15 @@
 {
-  "name": "light-form",
-  "version": "2.4.0",
+  "name": "@reglendo/light-form",
+  "version": "2.4.0-2",
   "description": "Lightweight React/Redux form state management",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/j0nas/light-form.git"
+    "url": "https://github.com/Reglendo/light-form"
   },
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest",
-    "test:ci": "cross-env NODE_ENV=test jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "test:watch": "cross-env NODE_ENV=test jest --watch",
-    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "build:min": "webpack && gzip-size ./dist/light-form.min.js",
     "build:clean": "rimraf ./dist",
     "build:umd": "cross-env NODE_ENV=umd babel ./src --out-dir ./dist/umd",
@@ -37,7 +33,9 @@
   "dependencies": {
     "dot-prop-immutable": "^1.3.1",
     "prop-types": "^15.5.7",
-    "react-select-item": "^3.1.0"
+    "react-select-item": "^3.1.0",
+    "typescript": "^3.2.2",
+    "upath": "^1.1.0"
   },
   "peerDependencies": {
     "react": "^15.0.0",
@@ -47,34 +45,17 @@
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-jest": "^20.0.1",
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.5",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "coveralls": "^2.13.1",
-    "cross-env": "^5.0.0",
-    "enzyme": "^2.8.2",
-    "gzip-size-cli": "^2.0.0",
-    "jest": "^20.0.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-test-renderer": "^15.5.4",
     "redux": "^3.7.1",
     "rimraf": "^2.6.1",
-    "webpack": "^3.0.0"
-  },
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "collectCoverageFrom": [
-      "src/**"
-    ]
+    "webpack": "^4.0.0"
   }
 }
