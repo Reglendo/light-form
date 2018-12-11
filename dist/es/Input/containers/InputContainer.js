@@ -14,7 +14,7 @@ var getFieldNamespace = function getFieldNamespace(nameProp) {
 var prefixValue = function prefixValue(form, name) {
     var splitted = name.split('.');
     splitted.splice(0, 1);
-    return [form, '_values'].concat(_toConsumableArray(splitted)).join('.');
+    return [form, ''].concat(_toConsumableArray(splitted)).join('.');
 };
 
 var InputContainer = function InputContainer(component) {
@@ -51,7 +51,7 @@ var InputContainer = function InputContainer(component) {
                 return dispatch.dispatch(changeField(type, own.name, value));
             }
         };
-        var name = state[namespace] && state[namespace]._values ? prefixValue(namespace, own.name) : own.name;
+        var name = state[namespace] && state[namespace] ? prefixValue(namespace, own.name) : own.name;
         var value = own.type === "radio" && own.value !== null ? own.value : name && dotProp.get(state, name) !== undefined ? dotProp.get(state, name) : '';
 
         return _extends({}, own, {
