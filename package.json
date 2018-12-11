@@ -1,6 +1,6 @@
 {
   "name": "@reglendo/light-form",
-  "version": "2.4.0-3",
+  "version": "2.4.0-4",
   "description": "Lightweight React/Redux form state management",
   "main": "dist/es/index.js",
   "repository": {
